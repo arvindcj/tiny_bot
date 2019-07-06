@@ -1,5 +1,7 @@
 *.gem
 *.rbc
+*~
+src/*Backtrace*
 /.config
 /coverage/
 /InstalledFiles
