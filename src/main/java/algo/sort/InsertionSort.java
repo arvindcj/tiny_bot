@@ -1,31 +1,33 @@
 package algo.sort;
 
-import org.apache.logging.log4j;
+import algo.Common;
+// import org.apache.log4j.Logger;
+//  import org.apache.log4j.BasicConfigurator;
 
 public class InsertionSort {
 
     Integer[] array;
-    private static final Logger LOGGER = LogManager.getLogger();
+    //static Logger logger = Logger.getLogger(InsertionSort.class);
 
     public InsertionSort(Integer[] a) {
-
+      //BasicConfigurator.configure();
+      Common.getInstance();
       array = a;
     }
 
     public Integer[] sort() {
-        for(int i=0; i < array.length; i++)
+        for(int i=1; i < array.length; i++)
           insert(i);
         return array;
     }
 
-    private void insert(int index){
-        int tracked = index + 1;
-        int value;
-        while(array[index] > array[tracked]) {
-            value = array[tracked];
-            array[tracked] = array[index];
-            tracked = index;
-            index -= 1;
+    private void insert(int position){
+        int index = position - 1;
+        int value = array[position];
+        while((index >= 0) && (array[index] > value)) {
+          array[index+1] = array[index];
+          index -= 1;
         }
+        array[index] = value;
     }
 }
